@@ -1,0 +1,3 @@
+import {describe,it,expect} from 'vitest'
+import {dayNumber,streak,parseImport,initial} from '../src/storage'
+describe('LUMIDREAM progress rules',()=>{it('limits course day to 28',()=>{expect(dayNumber('2020-01-01',new Date(2026,9,15))).toBe(28)});it('starts on day one',()=>{expect(dayNumber('2026-10-15',new Date(2026,9,15))).toBe(1)});it('counts no dreams as no streak',()=>{expect(streak([])).toBe(0)});it('rejects malformed backups',()=>{expect(()=>parseImport('{}')).toThrow()});it('accepts a valid backup',()=>{expect(parseImport(JSON.stringify({format:'LUMIDREAM-v1',data:initial}))).toEqual(initial)})})
