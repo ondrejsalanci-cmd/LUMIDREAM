@@ -1,8 +1,6 @@
 
 export type ReminderConfig = {enabled:boolean; count:number; start:string; end:string}
 export const defaultReminders:ReminderConfig={enabled:false,count:7,start:'09:00',end:'21:00'}
-const PREFIX=620000
-const DAYS=7
 export function minutes(time:string){const m=/^([01]\d|2[0-3]):([0-5]\d)$/.exec(time);return m?Number(m[1])*60+Number(m[2]):null}
 export function validConfig(c:ReminderConfig){return Number.isInteger(c.count)&&c.count>=5&&c.count<=12&&minutes(c.start)!==null&&minutes(c.end)!==null}
 // Equal times mean a full 24-hour window; otherwise an end before a start runs into the following day.
